@@ -146,4 +146,7 @@ insert into categories (user_id, name, kind) values
 
 select * from categories;
 
-select current_database();
+insert into life.users(email, display_name, timezone)
+values('magnusshalnev@gmail.com', 'Sergei', 'Europe/Sofia')
+
+select * from users
