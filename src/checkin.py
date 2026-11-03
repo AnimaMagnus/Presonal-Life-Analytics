@@ -54,6 +54,15 @@ def save_checkin(conn, user_id, data):
         VALUES
             (%(user_id)s, %(checkin_date)s, %(sleep_hours)s, %(mood)s, %(energy)s,
              %(productivity)s, %(gratitude)s, %(went_well)s, %(was_hard)s)
+        ON CONFLICT (user_id, checkin_date)
+        DO UPDATE SET
+            sleep_hours = EXCLUDED.sleep_hours,
+            mood = EXCLUDED.mood,
+            energy = EXCLUDED.energy,
+            productivity = EXCLUDED.productivity,
+            gratitude = EXCLUDED.gratitude,
+            went_well = EXCLUDED.went_well,
+            was_hard = EXCLUDED.was_hard
     """
     params = {**data, "user_id": user_id, "checkin_date": date.today()}
     with conn.cursor() as cur:
