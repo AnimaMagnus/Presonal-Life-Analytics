@@ -143,10 +143,3 @@ insert into categories (user_id, name, kind) values
     (NULL, 'Salary', 'income'),
     (NULL, 'Side income', 'income'),
     (NULL, 'Other', 'income');
-
-select * from categories;
-
-insert into life.users(email, display_name, timezone)
-values('magnusshalnev@gmail.com', 'Sergei', 'Europe/Sofia')
-
-select * from users
