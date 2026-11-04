@@ -68,9 +68,24 @@ def save_checkin(conn, user_id, data):
     with conn.cursor() as cur:
         cur.execute(sql, params)
 
+def show_recent(conn, user_id, limit=7):
+    sql = """
+        select checkin_date, sleep_hours, mood, energy, productivity
+           from daily_checkins
+           where user_id = %s
+           order by checkin_date desc
+           limit %s
+       """
+    with conn.cursor() as cur:
+        cur.execute(sql, (user_id, limit))
+        rows = cur.fetchall()
+    for day, sleep, mood, energy, productivity in rows:
+        print(f"Date: {day}, Sleep: {sleep}, Mood: {mood}, Energy: {energy}, Productivity: {productivity}")
+
 if __name__ == "__main__":
     with get_connection() as conn:
         user_id = get_user_id(conn)
         data = ask_checkin()
         save_checkin(conn, user_id, data)
         print("Check-in saved.")
+        show_recent(conn, user_id)
