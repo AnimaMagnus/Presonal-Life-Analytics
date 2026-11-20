@@ -143,6 +143,7 @@ insert into categories (user_id, name, kind) values
     (NULL, 'Salary', 'income'),
     (NULL, 'Side income', 'income'),
     (NULL, 'Other', 'income');
+<<<<<<< HEAD
 
 insert into users(email, display_name) values('magnusshalnev@gmail.com', 'AnimaMagnus');
 
@@ -154,3 +155,5 @@ alter table habits
 drop column title
 
 select * from habits
+=======
+>>>>>>> 2f02936153e92fcd436ff143b0db9f54a5dffbbb
