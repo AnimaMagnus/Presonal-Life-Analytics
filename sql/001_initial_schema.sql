@@ -144,9 +144,13 @@ insert into categories (user_id, name, kind) values
     (NULL, 'Side income', 'income'),
     (NULL, 'Other', 'income');
 
-select * from categories;
+insert into users(email, display_name) values('magnusshalnev@gmail.com', 'AnimaMagnus');
 
-insert into life.users(email, display_name, timezone)
-values('magnusshalnev@gmail.com', 'Sergei', 'Europe/Sofia')
+select daily_checkins.checkin_date, daily_checkins.updated_at, daily_checkins.sleep_hours, daily_checkins.mood, daily_checkins.energy,
+       daily_checkins.productivity, daily_checkins.went_well, daily_checkins.was_hard, daily_checkins.gratitude
+        from life.daily_checkins
 
-select * from users
+alter table habits
+drop column title
+
+select * from habits
